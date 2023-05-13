@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_usuario: 1
+  id_empleado: 1
+  id_f_tipo_usuario: 1
+  id_f_profesor: 1
+  nombre_usuario: MyString
+  correo_electronico_usuario: MyString
+  descripcion_rol: MyString
+  contrasenia: MyString
+  activo_usuario: false
+  fecha_creacion_usuario: 2023-05-12 14:00:18
+  fecha_modificacion_usuario: 2023-05-12 14:00:18
+
+two:
+  id_usuario: 1
+  id_empleado: 1
+  id_f_tipo_usuario: 1
+  id_f_profesor: 1
+  nombre_usuario: MyString
+  correo_electronico_usuario: MyString
+  descripcion_rol: MyString
+  contrasenia: MyString
+  activo_usuario: false
+  fecha_creacion_usuario: 2023-05-12 14:00:18
+  fecha_modificacion_usuario: 2023-05-12 14:00:18

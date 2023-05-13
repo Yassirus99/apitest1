@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :bdusers
-  post '/auth/login', to: 'authentication#login'
+  post '/authenticate', to: 'authentication#authenticate'
+  resources :usuarios, only: [:index, :show, :create, :update, :destroy]
 end
 
 
