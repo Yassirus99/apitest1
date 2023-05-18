@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+PARA CORRER ESTE PROYECTO ES IMPORTANTE TENER INSTALADO
 
-Things you may want to cover:
+-ruby "3.2.1"
+-'mysql2', '~> 0.5.5'
+-"rails", "~> 7.0.4", ">= 7.0.4.3"
+-gem "puma", "~> 5.0"
+-"bcrypt"
+-gem "jwt"
 
-* Ruby version
 
-* System dependencies
+PASO 1: CLONAR EL REPO
 
-* Configuration
+PASO2: METETE DENTRO DE LA CARPETA "apitest1"
 
-* Database creation
+PASO 3: APLICA LOS COMANDOS gem install mysql2, gem install jwt , gem install bcrypt (librerias usadas)
 
-* Database initialization
+PASO 4: INGRESA EL COMNADO bundle install
 
-* How to run the test suite
+DATO: Es importantisimo que el servidor de la base de datos se encuentre activo y corriendo con normalidad
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+PASO 5: USAR EL COMANDO , rails server o rails s
