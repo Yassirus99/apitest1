@@ -43,9 +43,10 @@ class RolesController < ApplicationController
         .permit(
           :ID_F_USUARIO,
           :ID_F_USUARIO_ROL,
-          :ACTIVO_ROL,
-          :FECHA_CREACION,
-          :FECHA_MODIFICACION
+          :EMPLEADO_ACTIVO
+         
+        #  :FECHA_CREACION,
+         # :FECHA_MODIFICACION
         )
   
       @rol = Rol.find_by(ID_ROL: params[:id])
@@ -71,7 +72,7 @@ class RolesController < ApplicationController
   
       # validación de existencia de rol
       if @rol.nil?
-        render json: { error: "Rol no encontrado" }, status: :nsot_found
+        render json: { error: "Rol no encontrado" }, status: :not_found
         return
       end
   

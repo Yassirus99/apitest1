@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   post '/authenticate', to: 'authentication#authenticate'
   # Usuario
   resources :usuarios, only: [:index, :show, :create, :update, :destroy]
+  # Rol
+  resources :roles, only: [:index, :show, :create, :update, :destroy]
+  
 end
 
 
