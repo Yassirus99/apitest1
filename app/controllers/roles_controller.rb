@@ -17,26 +17,25 @@ class RolesController < ApplicationController
     end
   
     def create
-      rol_params = params
-        .require(:rol)
-        .permit(
-          :ID_F_USUARIO,
-          :ID_F_USUARIO_ROL,
-          :ACTIVO_ROL,
-          :FECHA_CREACION,
-          :FECHA_MODIFICACION
-        )
-  
-      @rol = Rol.new(rol_params)
-      if @rol.save
-        render json: @rol, status: :created
-      else
-        render json: {
-          errors: @rol.errors,
-          message: "El rol no pudo ser creado"
-        }, status: :unprocessable_entity
+        rol_params = params
+          .require(:rol)
+          .permit(
+            :ID_EMPLEADO,
+            :ID_F_CARGO_EMPLEADO,
+            :EMPLEADO_ACTIVO
+          )
+      
+        @rol = Rol.new(rol_params)
+        if @rol.save
+          render json: @rol, status: :created
+        else
+          render json: {
+            errors: @rol.errors,
+            message: "El rol no pudo ser creado"
+          }, status: :unprocessable_entity
+        end
       end
-    end
+      
   
     def update
       rol_params = params
@@ -72,7 +71,7 @@ class RolesController < ApplicationController
   
       # validación de existencia de rol
       if @rol.nil?
-        render json: { error: "Rol no encontrado" }, status: :not_found
+        render json: { error: "Rol no encontrado" }, status: :nsot_found
         return
       end
   
