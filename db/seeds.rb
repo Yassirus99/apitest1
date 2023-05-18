@@ -11,20 +11,30 @@
     #FECHA_MODIFICACION_USUARIO: Time.now
 #})
 
+Tipousuario.create({
+  ID_TIPO_USUARIO: 1,
+  TIPO_USUARIO: "Usuario",
+  ACTIVO_TIPO_USUARIO: true
+})
+
+Tipousuario.create({
+  ID_TIPO_USUARIO: 1,
+  TIPO_USUARIO: "Usuario Rol",
+  ACTIVO_TIPO_USUARIO: true
+})
 
 # Crear un nuevo empleado
 # db/seeds.rb
 
 # Crear un nuevo empleado
-empleado = Empleado.new(ID_ESCUELA: 1, NOMBRE_ESCUELA: "Nombre de la escuela", ID_F_CARGO_EMPLEADO: 1, EMPLEADO_ACTIVO: true)
+Empleado.create({
+  ID_ESCUELA: 1, 
+  NOMBRE_ESCUELA: "Nombre de la escuela", 
+  ID_F_CARGO_EMPLEADO: 1, 
+  EMPLEADO_ACTIVO: true
+})
 
-# Guardar el empleado en la base de datos
-empleado.save
+# # Guardar el empleado en la base de datos
+# empleado.save
 
-# Agregar más datos si es necesario
-
-
-
-
-  
- 
+# # Agregar más datos si es necesario

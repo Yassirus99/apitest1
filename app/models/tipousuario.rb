@@ -1,13 +1,13 @@
 class Tipousuario < ApplicationRecord
-    # Nombre de la tabla en la base de datos
-    self.table_name = 'TIPOUSUARIO'
+  # Nombre de la tabla en la base de datos
+  self.table_name = 'TIPOUSUARIO'
+  self.primary_key = "ID_TIPO_USUARIO"
+
   
-   
-    attribute :ID_TIPO_USUARIO, :integer
-    attribute :TIPO_USUARIO, :string
-    attribute :ACTIVO_TIPO_USUARIO, :boolean
-   
-    validates :TIPO_USUARIO, presence: true
-    validates :ACTIVO_TIPO_USUARIO, inclusion: { in: [true, false] }
-  end
+  attribute :ID_TIPO_USUARIO, :integer
+  attribute :TIPO_USUARIO, :string
+  attribute :ACTIVO_TIPO_USUARIO, :boolean
   
+  validates :TIPO_USUARIO, presence: true
+  validates :ACTIVO_TIPO_USUARIO, inclusion: { in: [true, false] }
+end

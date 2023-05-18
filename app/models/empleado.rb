@@ -1,16 +1,14 @@
 class Empleado < ApplicationRecord
     self.table_name = 'EMPLEADO'
-    
-    attribute :ID_ESCUELA, :integer
-    attribute :NOMBRE_ESCUELA, :string
-    
     self.primary_key = "ID_EMPLEADO" 
-    belongs_to :cargo_empleado, foreign_key: "ID_F_CARGO_EMPLEADO" 
-  
-
-
     
-  end
-  
+    attribute :ID_EMPLEADO, :integer
+    attribute :ID_F_CARGO_EMPLEADO, :integer
+    attribute :EMPLEADO_ACTIVO, :boolean
+    # belongs_to :cargo_empleado, foreign_key: "ID_F_CARGO_EMPLEADO" 
 
+    validates :ID_EMPLEADO, :ID_F_CARGO_EMPLEADO, presence: false
+    validates :ID_F_CARGO_EMPLEADO, presence: true
+    validates :EMPLEADO_ACTIVO, inclusion: { in: [true, false] }
   
+  end
