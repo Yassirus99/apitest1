@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ID_ROL: 
+  ID_F_USUARIO: 1
+  ID_F_USUARIO_ROL: 1
+  ACTIVO_ROL: false
+  FECHA_CREACION: 2023-05-17
+  FECHA_MODIFICACION: 2023-05-17
+
+two:
+  ID_ROL: 
+  ID_F_USUARIO: 1
+  ID_F_USUARIO_ROL: 1
+  ACTIVO_ROL: false
+  FECHA_CREACION: 2023-05-17
+  FECHA_MODIFICACION: 2023-05-17
