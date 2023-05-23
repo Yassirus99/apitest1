@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_18_042542) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_23_014456) do
   create_table "ACTIVIDADEVALUADA", primary_key: "ID_ACTIVIDAD_EVALUADA", id: :integer, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.integer "ID_SISTEMA_EVALUACION"
     t.integer "ID_F_TIPO_EVALUACION", null: false
@@ -464,9 +464,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_18_042542) do
     t.index ["ID_F_TIPO_USUARIO"], name: "FK_FK_TIPO_USUARIO_USUARIO"
   end
 
-  create_table "empleados", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
-    t.integer "ID_ESCUELA"
-    t.string "NOMBRE_ESCUELA"
+  create_table "estudiantes", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.integer "ID_ESTUDIANTE"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "maestria", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "CODIGO_MAESTRIA"
+    t.integer "ID_ESTADO_MAESTRIA"
+    t.integer "ID_F_COORDINADOR_ACADEMICO"
+    t.integer "ID_F_EMPLEADO_CREADOR"
+    t.integer "ID_F_ESCUELA"
+    t.string "NOMBRE_MAESTRIA"
+    t.text "DESCRIPCION"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
