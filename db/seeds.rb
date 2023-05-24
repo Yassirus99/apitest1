@@ -17,6 +17,12 @@ Tipousuario.create({
   ACTIVO_TIPO_USUARIO: true
 })
 
+Tiporecurso.create({
+  ID_TIPO_RECURSO:1,
+  TIPO_RECURSO:"USUARIO ROL"
+
+})
+
 # Crear un nuevo empleado
 # db/seeds.rb
 
