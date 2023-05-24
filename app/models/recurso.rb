@@ -21,5 +21,5 @@ class Recurso < ApplicationRecord
     validates :ACTIVO_RECURSO, inclusion: { in: [true, false] }
     validates :FECHA_CREACION, presence: true
     validates :FECHA_MODIFICACION, presence: true
-  end
+end
   

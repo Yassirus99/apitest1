@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resources :usuarios, only: [:index, :show, :create, :update, :destroy]
   # Rol
   resources :roles, only: [:index, :show, :create, :update, :destroy]
+  # Tipo recurso
+  resources :tiporecursos, only: [:index, :show]
+  # Recurso
+  resources :recursos, only: [:index, :show, :create, :update, :destroy]
   
 end
 

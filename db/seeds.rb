@@ -11,16 +11,20 @@
     #FECHA_MODIFICACION_USUARIO: Time.now
 #})
 
-Tipousuario.create({
+Tipousuario.upsert({
   ID_TIPO_USUARIO: 1,
   TIPO_USUARIO: "Usuario",
   ACTIVO_TIPO_USUARIO: true
 })
 
-Tiporecurso.create({
-  ID_TIPO_RECURSO:1,
-  TIPO_RECURSO:"USUARIO ROL"
+Tiporecurso.upsert({
+  ID_TIPO_RECURSO: 1,
+  TIPO_RECURSO: "usuario_normal"
+})
 
+Tiporecurso.upsert({
+  ID_TIPO_RECURSO: 2,
+  TIPO_RECURSO: "usuario_rol"
 })
 
 # Crear un nuevo empleado

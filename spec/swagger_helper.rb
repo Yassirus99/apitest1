@@ -2,6 +2,8 @@
 
 require 'rails_helper'
 require_relative 'schemes/usuario_scheme'
+require_relative 'schemes/tiporecurso_scheme'
+require_relative 'schemes/recurso_scheme'
 
 RSpec.configure do |config|
   # Specify a root folder where Swagger JSON files are generated
@@ -35,7 +37,9 @@ RSpec.configure do |config|
       # ],
       components: {
         schemas: {
-          usuario: Usuario.swagger_doc
+          usuario: UsuarioScheme.swagger_doc,
+          tiporecurso: TiporecursoScheme.swagger_doc,
+          recurso: RecursoScheme.swagger_doc
         }
       }
     }

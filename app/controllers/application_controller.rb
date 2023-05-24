@@ -13,5 +13,5 @@ class ApplicationController < ActionController::API
         @current_user = Usuario.find(decoded[:user_id])
       end
     end
-end
+  end
 end
