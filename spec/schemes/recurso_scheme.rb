@@ -16,11 +16,9 @@ class RecursoScheme
         FECHA_MODIFICACION: { type: :string }
       },
       required: [
-        'ID_F_RECURSO_PADRE',
         'ID_F_TIPO_RECURSO',
         'NOMBRE_RECURSO',
         'RUTA_RECURSO',
-        'DESCRIPCION_RECURSO',
         'ACTIVO_RECURSO',
         'FECHA_CREACION',
         'FECHA_MODIFICACION'
