@@ -17,12 +17,6 @@ Tipousuario.create({
   ACTIVO_TIPO_USUARIO: true
 })
 
-Tipousuario.create({
-  ID_TIPO_USUARIO: 2,
-  TIPO_USUARIO: "Usuario Rol",
-  ACTIVO_TIPO_USUARIO: true
-})
-
 # Crear un nuevo empleado
 # db/seeds.rb
 

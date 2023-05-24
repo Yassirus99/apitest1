@@ -1,5 +1,5 @@
 class ExpedienteAcademico < ApplicationRecord
-    self.primary_key = "ID_EXPEDIENTE_ACADEMICO"
+   self.primary_key = "ID_EXPEDIENTE_ACADEMICO"
     self.table_name = 'EXPEDIENTEACADEMICO'
   
     attribute :ID_EXPEDIENTE_ACADEMICO, :integer
