@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_18_042542) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_23_024229) do
   create_table "ACTIVIDADEVALUADA", primary_key: "ID_ACTIVIDAD_EVALUADA", id: :integer, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.integer "ID_SISTEMA_EVALUACION"
     t.integer "ID_F_TIPO_EVALUACION", null: false
@@ -462,13 +462,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_18_042542) do
     t.index ["ID_EMPLEADO"], name: "FK_FK_EMPLEADO_USUARIO"
     t.index ["ID_F_PROFESOR"], name: "FK_FK_PROFESOR_USUARIO"
     t.index ["ID_F_TIPO_USUARIO"], name: "FK_FK_TIPO_USUARIO_USUARIO"
-  end
-
-  create_table "empleados", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
-    t.integer "ID_ESCUELA"
-    t.string "NOMBRE_ESCUELA"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "ACTIVIDADEVALUADA", "ESTADOAPROBACCIONACTIVIDAD", column: "ID_F_ESTADO_APROBACION_ACTIVIDAD", primary_key: "ID_ESTADO_APROBACION_ACTIVIDAD", name: "FK_FK_ESTADO_APROBACION_ACTIVIDAD_EVALUADA"

@@ -1,0 +1,206 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/usuarios":
+    post:
+      summary: Crear usuario
+      tags:
+      - Usuarios
+      parameters: []
+      responses:
+        '201':
+          description: Uusario creado
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - "$ref": "#/components/schemas/usuario"
+            text/json:
+              schema:
+                oneOf:
+                - "$ref": "#/components/schemas/usuario"
+            text/plain:
+              schema:
+                oneOf:
+                - "$ref": "#/components/schemas/usuario"
+        '500':
+          description: Error interno del servidor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - "$ref": "#/components/schemas/usuario"
+    get:
+      summary: Lista de usuarios
+      tags:
+      - Usuarios
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/usuario"
+            text/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/usuario"
+            text/plain:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/usuario"
+        '500':
+          description: Error interno del servidor
+  "/usuarios/{id}":
+    get:
+      summary: Obtener usuario por id
+      tags:
+      - Usuarios
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/usuario"
+            text/json:
+              schema:
+                "$ref": "#/components/schemas/usuario"
+            text/plain:
+              schema:
+                "$ref": "#/components/schemas/usuario"
+        '404':
+          description: Usuario no encontrado
+        '500':
+          description: Error interno del servidor
+    put:
+      summary: Actualizar usuario por id
+      tags:
+      - Usuarios
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/usuario"
+            text/json:
+              schema:
+                "$ref": "#/components/schemas/usuario"
+            text/plain:
+              schema:
+                "$ref": "#/components/schemas/usuario"
+        '404':
+          description: Usuario no encontrado
+        '500':
+          description: Error interno del servidor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - "$ref": "#/components/schemas/usuario"
+    patch:
+      summary: Actualizar usuario por id
+      tags:
+      - Usuarios
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/usuario"
+            text/json:
+              schema:
+                "$ref": "#/components/schemas/usuario"
+            text/plain:
+              schema:
+                "$ref": "#/components/schemas/usuario"
+        '404':
+          description: Usuario no encontrado
+        '500':
+          description: Error interno del servidor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - "$ref": "#/components/schemas/usuario"
+    delete:
+      summary: Eliminar usuario por id
+      tags:
+      - Usuarios
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Usuario eliminado
+        '404':
+          description: Usuario no encontrado
+        '500':
+          description: Error interno del servidor
+components:
+  schemas:
+    usuario:
+      type: object
+      properties:
+        ID_USUARIO:
+          type: integer
+        ID_EMPLEADO:
+          type: integer
+        ID_F_TIPO_USUARIO:
+          type: integer
+        ID_F_PROFESOR:
+          type: integer
+        NOMBRE_USUARIO:
+          type: string
+        CORREO_ELECTRONICO_USUARIO:
+          type: string
+        DESCRIPCION_ROL:
+          type: string
+        CONTRASENIA:
+          type: string
+        ACTIVO_USUARIO:
+          type: boolean
+        FECHA_CREACION_USUARIO:
+          type: string
+        FECHA_MODIFICACION_USUARIO:
+          type: string
+      required:
+      - ID_F_TIPO_USUARIO
+      - NOMBRE_USUARIO
+      - CONTRASENIA
+      - ACTIVO_USUARIO
+      - FECHA_CREACION_USUARIO
+      - FECHA_MODIFICACION_USUARIO

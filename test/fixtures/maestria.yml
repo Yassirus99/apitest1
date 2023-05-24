@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  CODIGO_MAESTRIA: MyString
+  ID_ESTADO_MAESTRIA: 1
+  ID_F_COORDINADOR_ACADEMICO: 1
+  ID_F_EMPLEADO_CREADOR: 1
+  ID_F_ESCUELA: 1
+  NOMBRE_MAESTRIA: MyString
+  DESCRIPCION: MyText
+
+two:
+  CODIGO_MAESTRIA: MyString
+  ID_ESTADO_MAESTRIA: 1
+  ID_F_COORDINADOR_ACADEMICO: 1
+  ID_F_EMPLEADO_CREADOR: 1
+  ID_F_ESCUELA: 1
+  NOMBRE_MAESTRIA: MyString
+  DESCRIPCION: MyText
