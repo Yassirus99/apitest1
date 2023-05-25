@@ -64,8 +64,6 @@ class UsuariosController < ApplicationController
       @usuario = Usuario.find_by(CORREO_ELECTRONICO_USUARIO: params[:CORREO_ELECTRONICO_USUARIO])
       if @usuario.nil?
         render json: {error: "Usuario no encontrado"}, status: :not_found
-      elsif @usuario.CONTRASENIA != params[:CONTRASENIA]
-        render json: {error: "Contraseña inválida"}, status: :unprocessable_entity
       end
     end
 
