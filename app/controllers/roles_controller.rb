@@ -20,9 +20,12 @@ class RolesController < ApplicationController
         rol_params = params
           .require(:rol)
           .permit(
-            :ID_EMPLEADO,
-            :ID_F_CARGO_EMPLEADO,
-            :EMPLEADO_ACTIVO
+            :ID_ROL,
+            :ID_F_USUARIO,
+            :ID_F_USUARIO_ROL,
+            :ACTIVO_ROL,
+            :FECHA_CREACION,
+            :FECHA_MODIFICACION
           )
       
         @rol = Rol.new(rol_params)
@@ -41,9 +44,12 @@ class RolesController < ApplicationController
       rol_params = params
         .require(:rol)
         .permit(
-          :ID_F_USUARIO,
-          :ID_F_USUARIO_ROL,
-          :EMPLEADO_ACTIVO
+            :ID_ROL,
+            :ID_F_USUARIO,
+            :ID_F_USUARIO_ROL,
+            :ACTIVO_ROL,
+            :FECHA_CREACION,
+            :FECHA_MODIFICACION
          
         #  :FECHA_CREACION,
          # :FECHA_MODIFICACION
