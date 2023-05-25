@@ -1,4 +1,4 @@
-class Usuario
+class UsuarioScheme
   include Swagger::Blocks
 
   def self.swagger_doc

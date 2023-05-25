@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ciclomaestria
   mount Rswag::Api::Engine => '/api-docs'
   mount Rswag::Ui::Engine => '/api-docs'
   # Tipousuario
@@ -11,6 +12,15 @@ Rails.application.routes.draw do
   resources :usuarios, only: [:index, :show, :create, :update, :destroy]
   # Rol
   resources :roles, only: [:index, :show, :create, :update, :destroy]
+  # Tipo recurso
+  resources :tiporecursos, only: [:index, :show]
+  # Recurso
+  resources :recursos, only: [:index, :show, :create, :update, :destroy]
+  #Maestria
+  resources :maestria, only: [:index, :show, :create, :update, :destroy]
+  #Ciclomaestria
+  resources :ciclomaestria, only: [:index, :show, :create, :update, :destroy]
+
   
 end
 
