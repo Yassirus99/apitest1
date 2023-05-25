@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   resources :tiporecursos, only: [:index, :show]
   # Recurso
   resources :recursos, only: [:index, :show, :create, :update, :destroy]
+  #Maestria
+  resources :maestria, only: [:index, :show, :create, :update, :destroy]
+
   
 end
 
