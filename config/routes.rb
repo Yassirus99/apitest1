@@ -45,7 +45,16 @@ Rails.application.routes.draw do
   resources :observacionesprogramaasignaturas, only: [:index, :show, :create, :update, :destroy]
   #observacion maestrias
   resources :observacionmaestrias, only: [:index, :show, :create, :update, :destroy]
-
+  #observacion plan estudios
+  resources :observacionplanestudios, only: [:index, :show, :create, :update, :destroy]
+  #oferta contratacion 
+  resources :ofertacontrataciones, only: [:index, :show, :create, :update, :destroy]
+  #paises
+  resources :paises, only: [:index, :show, :create, :update, :destroy]
+  #perfiles aspirantes
+  resources :perfilaspirantes, only: [:index, :show, :create, :update, :destroy]
+  #permisos
+  resources :permisos, only: [:index, :show, :create, :update, :destroy]
 
 
 
