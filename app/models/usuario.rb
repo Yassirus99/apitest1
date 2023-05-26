@@ -1,19 +1,55 @@
 class Usuario < ApplicationRecord
+  include BCrypt
   self.table_name = "USUARIO"
-  
-    # Columnas de la tabla usuario
-    # Debes asegurarte que los nombres de las columnas coincidan exactamente con los de tu base de datos
-    # y especificar el tipo de datos correspondiente
-    attribute :id_usuario, :integer
-    attribute :id_empleado, :integer
-    attribute :id_f_tipo_usuario, :integer
-    attribute :id_f_profesor, :integer
-    attribute :nombre_usuario, :string
-    attribute :correo_electronico_usuario, :string
-    attribute :descripcion_rol, :string
-    attribute :contrasenia, :string
-    attribute :activo_usuario, :boolean
-    attribute :fecha_creacion_usuario, :datetime
-    attribute :fecha_modificacion_usuario, :datetime
+
+  attribute :ID_USUARIO, :integer
+  attribute :ID_EMPLEADO, :integer
+  attribute :ID_F_TIPO_USUARIO, :integer
+  attribute :ID_F_PROFESOR, :integer
+  attribute :NOMBRE_USUARIO, :string
+  attribute :CORREO_ELECTRONICO_USUARIO, :string
+  attribute :DESCRIPCION_ROL, :string
+  attribute :CONTRASENIA, :string
+  attribute :ACTIVO_USUARIO, :boolean
+  attribute :FECHA_CREACION_USUARIO, :datetime
+  attribute :FECHA_MODIFICACION_USUARIO, :datetime
+
+  def contrasenia=(new_password)
+    if new_password.nil? || new_password.empty?
+      return
+    end
+    @password = Password.create(new_password)
+    return @password
   end
-  
+
+  def self.new(usuario_params = nil, &block)
+    logger.debug "usuario_params: #{usuario_params}"
+    usuario_params[:CONTRASENIA] = self.encrypt_password(usuario_params[:CONTRASENIA])
+    super(usuario_params, &block)
+  end
+
+  def update(usuario_params)
+    password = usuario_params[:CONTRASENIA]
+
+    if !(password.nil? || password.empty?)
+      usuario_params[:CONTRASENIA] = self.encrypt_password(usuario_params[:CONTRASENIA])
+    end
+    super(usuario_params)
+  end
+
+  def encrypt_password(new_password)
+    if new_password.nil? || new_password.empty?
+      return
+    end
+    @password = Password.create(new_password)
+    return @password
+  end
+
+  def self.encrypt_password(new_password)
+    if new_password.nil? || new_password.empty?
+      return
+    end
+    @password = Password.create(new_password)
+    return @password
+  end
+end

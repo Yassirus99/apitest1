@@ -1,5 +1,5 @@
 class UsuariosController < ApplicationController
-    before_action :set_usuario, only: [:show, :destroy]
+    # before_action :set_usuario, only: [:show, :destroy]
   
     def index
       @usuarios = Usuario.all
@@ -7,6 +7,14 @@ class UsuariosController < ApplicationController
     end
   
     def show
+      @usuario = Usuario.find_by(id_usuario: params[:id])
+
+      # validacion de existencia de empleado
+    if @usuario.nil?
+      render json: {error: "Usuario no encontrado"}, status: :not_found
+      return
+    end
+    
       render json: @usuario, status: :ok
     end
   
@@ -29,7 +37,16 @@ class UsuariosController < ApplicationController
     end
   
     def destroy
+      @usuario = Usuario.find_by(ID_USUARIO: params[:id])
+
+      # validacion de existencia de empleado
+      if @usuario.nil?
+        render json: {error: "Usuario no encontrado"}, status: :not_found
+        return
+      end
+
       @usuario.destroy
+
       head :no_content
     end
   
@@ -47,8 +64,7 @@ class UsuariosController < ApplicationController
       @usuario = Usuario.find_by(CORREO_ELECTRONICO_USUARIO: params[:CORREO_ELECTRONICO_USUARIO])
       if @usuario.nil?
         render json: {error: "Usuario no encontrado"}, status: :not_found
-      elsif @usuario.CONTRASENIA != params[:CONTRASENIA]
-        render json: {error: "Contraseña inválida"}, status: :unprocessable_entity
       end
     end
-  end
+
+end

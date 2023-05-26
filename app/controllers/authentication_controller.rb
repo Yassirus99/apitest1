@@ -19,18 +19,3 @@ class AuthenticationController < ApplicationController
   end
 
 end
-end
-
-  /
-  # POST
-  def login
-    @usuario = Usuario.find_by_email(params[:email]) # Cambia aquí el nombre del modelo
-    if @usuario && @usuario.authenticate(params[:password])
-      token = JsonwebToken.jwt_encode(user_id: @usuario.id)
-      render json: { token: token }, status: :ok
-    else
-      render json: { error: 'Invalid username or password' }, status: :unauthorized
-    end
-  end/
-
-

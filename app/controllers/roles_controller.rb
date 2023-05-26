@@ -17,36 +17,42 @@ class RolesController < ApplicationController
     end
   
     def create
-      rol_params = params
-        .require(:rol)
-        .permit(
-          :ID_F_USUARIO,
-          :ID_F_USUARIO_ROL,
-          :ACTIVO_ROL,
-          :FECHA_CREACION,
-          :FECHA_MODIFICACION
-        )
-  
-      @rol = Rol.new(rol_params)
-      if @rol.save
-        render json: @rol, status: :created
-      else
-        render json: {
-          errors: @rol.errors,
-          message: "El rol no pudo ser creado"
-        }, status: :unprocessable_entity
+        rol_params = params
+          .require(:rol)
+          .permit(
+            :ID_ROL,
+            :ID_F_USUARIO,
+            :ID_F_USUARIO_ROL,
+            :ACTIVO_ROL,
+            :FECHA_CREACION,
+            :FECHA_MODIFICACION
+          )
+      
+        @rol = Rol.new(rol_params)
+        if @rol.save
+          render json: @rol, status: :created
+        else
+          render json: {
+            errors: @rol.errors,
+            message: "El rol no pudo ser creado"
+          }, status: :unprocessable_entity
+        end
       end
-    end
+      
   
     def update
       rol_params = params
         .require(:rol)
         .permit(
-          :ID_F_USUARIO,
-          :ID_F_USUARIO_ROL,
-          :ACTIVO_ROL,
-          :FECHA_CREACION,
-          :FECHA_MODIFICACION
+            :ID_ROL,
+            :ID_F_USUARIO,
+            :ID_F_USUARIO_ROL,
+            :ACTIVO_ROL,
+            :FECHA_CREACION,
+            :FECHA_MODIFICACION
+         
+        #  :FECHA_CREACION,
+         # :FECHA_MODIFICACION
         )
   
       @rol = Rol.find_by(ID_ROL: params[:id])
