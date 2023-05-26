@@ -32,6 +32,23 @@
   resources :aspirante_requisitos, only: [:index, :show, :create, :update, :destroy]
   #bibliografia programa
   resources :bibliografia_programas, only: [:index, :show, :create, :update, :destroy]
+  #cargo empleado
+  resources :cargo_empleados, only: [:index, :show, :create, :update, :destroy]
+  # CicloMaestria
+  resources :ciclo_maestrias, only: [:index, :show, :create, :update, :destroy]
+  #ciclos
+  resources :ciclos, only: [:index, :show, :create, :update, :destroy]
+  #cohorte estudiante
+  resources :cohortes_estudiantes, only: [:index, :show, :create, :update, :destroy]
+  # Cohorte
+  resources :cohortes, only: [:index, :show, :create, :update, :destroy]
+  # DatosPersona
+  resources :datos_personas, only: [:index, :show, :create, :update, :destroy]
+  #detalle contratacion
+  resources :detalle_contratacion, only: [:index, :show, :create, :update, :destroy]
+  
+
+
 
   
 end
