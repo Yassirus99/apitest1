@@ -63,8 +63,12 @@ Rails.application.routes.draw do
   resources :programaasignaturas, only: [:index, :show, :create, :update, :destroy]
   #programa metodologias
   resources :programametodologias, only: [:index, :show, :create, :update, :destroy]
-
-
+  #requisitos 
+  resources :requisitos, only: [:index, :show, :create, :update, :destroy]
+  #requisito aspirante
+  resources :requisito_aspirantes, only: [:index, :show, :create, :update, :destroy]
+  #sistema evaluaciones
+  resources :sistema_evaluaciones, only: [:index, :show, :create, :update, :destroy]
 
 end
 
