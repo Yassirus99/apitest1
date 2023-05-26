@@ -28,6 +28,9 @@ RSpec.describe 'Usuarios', type: :request do
     get 'Lista de usuarios' do
       tags 'Usuarios'
       produces 'application/json', 'text/json', 'text/plain'
+      parameter name: :usuario, in: :query, schema: {
+        '$ref' => '#/components/schemas/usuario'
+      }
 
       response '200', 'Ok', swagger_strict_schema_validation: true do
         schema type: :array,

@@ -2,20 +2,54 @@ class UsuariosController < ApplicationController
     # before_action :set_usuario, only: [:show, :destroy]
   
     def index
-      @usuarios = Usuario.all
-      render json: @usuarios, status: :ok
+      @usuarios = Usuario.where("ACTIVO_USUARIO = ?", true)
+      
+      attributes = Usuario.attribute_names
+      params.each do |key, value|
+        if attributes.include? key 
+          @usuarios = @usuarios.where(key => value) unless value.blank?
+        elsif key == "search"
+          value.split(" ").each do |word|
+            @usuarios = @usuarios.where("NOMBRE_USUARIO LIKE ?", "%#{word}%")
+            @usuarios = @usuarios.or(Usuario.where("CORREO_ELECTRONICO_USUARIO LIKE ?", "%#{word}%"))
+          end
+        end
+      end
+
+      response = @usuarios.includes(
+        :empleado,
+        :tipousuario,
+        :profesor
+      ).as_json(include: [
+        :empleado,
+        :tipousuario,
+        :profesor
+      ])
+
+      render json: response, status: :ok
     end
   
     def show
-      @usuario = Usuario.find_by(id_usuario: params[:id])
+      @usuario = Usuario.where("ACTIVO_USUARIO = ?", true)
+      .where(ID_USUARIO: params[:id])
 
       # validacion de existencia de empleado
-    if @usuario.nil?
-      render json: {error: "Usuario no encontrado"}, status: :not_found
-      return
-    end
+      if @usuario.first.nil?
+        render json: {error: "Usuario no encontrado"}, status: :not_found
+        return
+      end
+
+      response = @usuario.includes(
+        :empleado,
+        :tipousuario,
+        :profesor
+      ).as_json(include: [
+        :empleado,
+        :tipousuario,
+        :profesor
+      ]).first
     
-      render json: @usuario, status: :ok
+      render json: response, status: :ok
     end
   
     def create
