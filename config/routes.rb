@@ -21,7 +21,16 @@ Rails.application.routes.draw do
   #Ciclomaestria
   resources :ciclomaestria, only: [:index, :show, :create, :update, :destroy]
 
-  
+  #############################
+
+  #EstadoprogramaasignaturasController
+  resources :estadoprogramaasignaturas, only: [:index, :new, :create]
+  #Expedienteacademico 
+  resources :expedienteacademico, only: [:index, :show, :create, :update, :destroy]
+  #Experiencialaboral
+  resources :experiencia_laboral, only: [:index, :show, :create, :update, :destroy]
+  #Fuentebibliografica
+  resources :fuentebibliografica, only: [:index, :show, :create, :update, :destroy]
 end
 
 
