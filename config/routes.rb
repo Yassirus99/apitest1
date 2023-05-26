@@ -37,6 +37,17 @@ Rails.application.routes.draw do
   resources :maestriaasignatura, only: [:index, :show, :create, :update, :destroy]
   #metodologiaensenanza 
   resources :metodologiaensenanza, only: [:index, :show, :create, :update, :destroy]
+  #modalidad
+  resources :modalidad, only: [:index, :show, :create, :update, :destroy]
+  #municipio
+  resources :municipios, only: [:index, :show, :create, :update, :destroy]
+  #observacionesprogramaasignatura
+  resources :observacionesprogramaasignaturas, only: [:index, :show, :create, :update, :destroy]
+  #observacion maestrias
+  resources :observacionmaestrias, only: [:index, :show, :create, :update, :destroy]
+
+
+
 
 end
 
