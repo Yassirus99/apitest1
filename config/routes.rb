@@ -75,9 +75,10 @@ Rails.application.routes.draw do
   resources :tipo_evaluaciones, only: [:index, :show, :create, :update, :destroy]
   #tipo profesor  
   resources :tipo_profesores, only: [:index, :show, :create, :update, :destroy]
-
+ 
 
 end
+
 
 
 

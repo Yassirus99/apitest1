@@ -53,3 +53,4 @@ class Usuario < ApplicationRecord
     return @password
   end
 end
+ 
