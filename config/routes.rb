@@ -55,6 +55,14 @@ Rails.application.routes.draw do
   resources :perfilaspirantes, only: [:index, :show, :create, :update, :destroy]
   #permisos
   resources :permisos, only: [:index, :show, :create, :update, :destroy]
+  #planes estudios  
+  resources :planestudios, only: [:index, :show, :create, :update, :destroy]
+  #profesores
+  resources :profesores, only: [:index, :show, :create, :update, :destroy]
+  #programa asignaturas
+  resources :programaasignaturas, only: [:index, :show, :create, :update, :destroy]
+  #programa metodologias
+  resources :programametodologias, only: [:index, :show, :create, :update, :destroy]
 
 
 
