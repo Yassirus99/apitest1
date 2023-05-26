@@ -6,6 +6,7 @@ class ExpedienteAcademicoController < ApplicationController
     end
   
     def show
+        render json: @expediente_academico, status: :ok
     end
   
     def new

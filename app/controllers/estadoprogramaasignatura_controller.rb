@@ -3,6 +3,10 @@ class EstadoprogramaasignaturasController < ApplicationController
       @estadoprogramaasignaturas = Estadoprogramaasignatura.all
     end
   
+    def show
+      render json: @estadoprogramaasignatura, status: :ok
+    end
+
     def new
       @estadoprogramaasignatura = Estadoprogramaasignatura.new
     end

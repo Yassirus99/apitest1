@@ -3,10 +3,10 @@ class ExperienciaLaboralController < ApplicationController
   
     def index
       @experiencias_laborales = ExperienciaLaboral.all
-    end
-  
-    def show
-    end
+
+      def show
+        render json: @experiencia_laboral, status: :ok
+      end
   
     def new
       @experiencia_laboral = ExperienciaLaboral.new

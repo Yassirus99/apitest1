@@ -31,6 +31,13 @@ Rails.application.routes.draw do
   resources :experiencia_laboral, only: [:index, :show, :create, :update, :destroy]
   #Fuentebibliografica
   resources :fuentebibliografica, only: [:index, :show, :create, :update, :destroy]
+  #Gradoacademico 
+  resources :gradoacademico, only: [:index, :show, :create, :update, :destroy]
+  #maestriaasignatura
+  resources :maestriaasignatura, only: [:index, :show, :create, :update, :destroy]
+  #metodologiaensenanza 
+  resources :metodologiaensenanza, only: [:index, :show, :create, :update, :destroy]
+
 end
 
 

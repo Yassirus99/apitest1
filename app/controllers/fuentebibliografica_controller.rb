@@ -6,6 +6,7 @@ class FuentebibliograficaController < ApplicationController
     end
   
     def show
+      render json: @fuentebibliografica, status: :ok
     end
   
     def new
