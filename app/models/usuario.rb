@@ -1,10 +1,10 @@
 class Usuario < ApplicationRecord
   include BCrypt
   self.table_name = "USUARIO"
-
-  belongs_to :empleado, foreign_key: "ID_EMPLEADO", primary_key: "ID_EMPLEADO"
+  
+  belongs_to :empleado, foreign_key: "ID_EMPLEADO", primary_key: "ID_EMPLEADO", optional: true
   belongs_to :tipousuario, foreign_key: "ID_F_TIPO_USUARIO", primary_key: "ID_TIPO_USUARIO"
-  belongs_to :profesor, foreign_key: "ID_F_PROFESOR", primary_key: "ID_PROFESOR"
+  belongs_to :profesor, foreign_key: "ID_F_PROFESOR", primary_key: "ID_PROFESOR", optional: true
 
   attribute :ID_USUARIO, :integer
   attribute :ID_EMPLEADO, :integer
