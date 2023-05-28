@@ -5,7 +5,7 @@ class Fuentebibliografica < ApplicationRecord
 attribute :ID_FUENTE_BIBLIOGRAFICA, :integer
   attribute :DIRECCION_FUENTE, :string
   attribute :NOMBRE_FUENTE, :string
-  attribute :AUTOR, : string
+  attribute :AUTOR, :string
   attribute :ANIO_PUBLICACION, :integer
 
 
