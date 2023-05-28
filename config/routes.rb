@@ -50,8 +50,64 @@
 
 
 
-  
+  #############################
+
+  #EstadoprogramaasignaturasController
+  resources :estadoprogramaasignaturas, only: [:index, :new, :create]
+  #Expedienteacademico 
+  resources :expedienteacademico, only: [:index, :show, :create, :update, :destroy]
+  #Experiencialaboral
+  resources :experiencia_laboral, only: [:index, :show, :create, :update, :destroy]
+  #Fuentebibliografica
+  resources :fuentebibliografica, only: [:index, :show, :create, :update, :destroy]
+  #Gradoacademico 
+  resources :gradoacademico, only: [:index, :show, :create, :update, :destroy]
+  #maestriaasignatura
+  resources :maestriaasignatura, only: [:index, :show, :create, :update, :destroy]
+  #metodologiaensenanza 
+  resources :metodologiaensenanza, only: [:index, :show, :create, :update, :destroy]
+  #modalidad
+  resources :modalidad, only: [:index, :show, :create, :update, :destroy]
+  #municipio
+  resources :municipios, only: [:index, :show, :create, :update, :destroy]
+  #observacionesprogramaasignatura
+  resources :observacionesprogramaasignaturas, only: [:index, :show, :create, :update, :destroy]
+  #observacion maestrias
+  resources :observacionmaestrias, only: [:index, :show, :create, :update, :destroy]
+  #observacion plan estudios
+  resources :observacionplanestudios, only: [:index, :show, :create, :update, :destroy]
+  #oferta contratacion 
+  resources :ofertacontrataciones, only: [:index, :show, :create, :update, :destroy]
+  #paises
+  resources :paises, only: [:index, :show, :create, :update, :destroy]
+  #perfiles aspirantes
+  resources :perfilaspirantes, only: [:index, :show, :create, :update, :destroy]
+  #permisos
+  resources :permisos, only: [:index, :show, :create, :update, :destroy]
+  #planes estudios  
+  resources :planestudios, only: [:index, :show, :create, :update, :destroy]
+  #profesores
+  resources :profesores, only: [:index, :show, :create, :update, :destroy]
+  #programa asignaturas
+  resources :programaasignaturas, only: [:index, :show, :create, :update, :destroy]
+  #programa metodologias
+  resources :programametodologias, only: [:index, :show, :create, :update, :destroy]
+  #requisitos 
+  resources :requisitos, only: [:index, :show, :create, :update, :destroy]
+  #requisito aspirante
+  resources :requisito_aspirantes, only: [:index, :show, :create, :update, :destroy]
+  #sistema evaluaciones
+  resources :sistema_evaluaciones, only: [:index, :show, :create, :update, :destroy]
+  #tipo documentacion profesores
+  resources :tipo_documentacion_profesores, only: [:index, :show, :create, :update, :destroy]
+  #tipo evaluaciones 
+  resources :tipo_evaluaciones, only: [:index, :show, :create, :update, :destroy]
+  #tipo profesor  
+  resources :tipo_profesores, only: [:index, :show, :create, :update, :destroy]
+ 
+
 end
+
 
 
 

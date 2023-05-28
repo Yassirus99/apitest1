@@ -1,4 +1,4 @@
-class FUENTEBIBLIOGRAFICA < ApplicationRecord
+class Fuentebibliografica < ApplicationRecord
     self.primary_key = "ID_FUENTE_BIBLIOGRAFICA"
     self.table_name = 'FUENTEBIBLIOGRAFICA'
   

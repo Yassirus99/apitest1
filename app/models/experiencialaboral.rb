@@ -1,4 +1,4 @@
-class ExperienciaLaboral < ApplicationRecord
+class Experiencialaboral < ApplicationRecord
     self.table_name = 'EXPERIENCIALABORAL'
     self.primary_key = 'ID_EXPERIENCIA_LABORAL'
   
