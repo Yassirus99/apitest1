@@ -9,5 +9,5 @@ class EstadoObservacionPlanEstudio < ApplicationRecord
     # Validaciones
     validates :ID_ESTADO_OBSERVACION_PLAN_ESTUDIO, presence: true
     validates :ESTADO_OBSERVACION_PLAN_ESTUDIO, presence: true
-  end
+end
   

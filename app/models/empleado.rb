@@ -11,5 +11,4 @@ class Empleado < ApplicationRecord
     validates :ID_EMPLEADO, :ID_F_CARGO_EMPLEADO, presence: false
     validates :ID_F_CARGO_EMPLEADO, presence: true
     validates :EMPLEADO_ACTIVO, inclusion: { in: [true, false] }
-    end
-    
+end
