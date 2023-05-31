@@ -16,6 +16,43 @@ class UsuariosController < ApplicationController
         end
       end
 
+ ##aqui agregare la funcion que se pidio
+
+ usuarios_data = []
+    @usuarios.each do |usuario|
+      id_usuario = usuario.ID_USUARIO
+      nombre_usuario = usuario.NOMBRE_USUARIO
+      id_f_empleado = usuario.ID_EMPLEADO
+      nombre_empleado = usuario.empleado&.NOMBRE_EMPLEADO
+      correo_electronico = usuario.CORREO_ELECTRONICO_USUARIO
+      fecha_creacion = usuario.FECHA_CREACION_USUARIO
+      usuario_activo = usuario.ACTIVO_USUARIO
+
+      roles = []
+      roles_usuario = Rol.where(ID_USUARIO: id_usuario, ACTIVO_ROL: true)
+      roles_usuario.each do |rol|
+        usuario_rol = Usuario.find_by(ID_USUARIO: rol.ID_ROL)
+        roles << { id_usuario: usuario_rol.ID_USUARIO, nombre_usuario: usuario_rol.NOMBRE_USUARIO }
+      end
+
+      usuario_data = {
+        id_usuario: id_usuario,
+        nombre_usuario: nombre_usuario,
+        id_f_empleado: id_f_empleado,
+        nombre_empleado: nombre_empleado,
+        correo_electronico: correo_electronico,
+        fecha_creacion: fecha_creacion,
+        usuario_activo: usuario_activo,
+        roles: roles
+      }
+
+      usuarios_data << usuario_data
+    end
+
+
+ ##aqui
+
+
       response = @usuarios.includes(
         :empleado,
         :tipousuario,
@@ -26,8 +63,14 @@ class UsuariosController < ApplicationController
         :profesor
       ])
 
-      render json: response, status: :ok
+    # render json: response, status: :ok
+    render json: usuarios_data, status: :ok
     end
+
+
+   
+
+
   
     def show
       @usuario = Usuario.where("ACTIVO_USUARIO = ?", true)
