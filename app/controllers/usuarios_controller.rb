@@ -16,7 +16,7 @@ class UsuariosController < ApplicationController
         end
       end
 
- ##aqui agregare la funcion que se pidio
+ ##aqui agregare la funcion que se pidio para obtener los datos
 
  usuarios_data = []
     @usuarios.each do |usuario|
@@ -67,7 +67,33 @@ class UsuariosController < ApplicationController
     render json: usuarios_data, status: :ok
     end
 
+    ##ESTO SUPESTAMENTE ES PARA CAMBIAR EL ESTADO DE ACTIVO A INCACTIVO
 
+    def cambiar_estado
+      begin
+        id_usuario = params[:id]
+        usuario_actual = current_user.id
+    
+        if id_usuario != usuario_actual
+          usuario = Usuario.find(id_usuario)
+          estado_activo = usuario.ACTIVO_USUARIO
+    
+          # Cambiar el estado del usuario
+          usuario.ACTIVO_USUARIO = !estado_activo
+          if usuario.save
+            render json: { message: 'Estado del usuario actualizado correctamente' }, status: :ok
+          else
+            render json: { error: 'No se pudo cambiar el estado del usuario' }, status: :unprocessable_entity
+          end
+        else
+          render json: { message: 'No se pudo actualizar el estado del usuario' }, status: :ok
+        end
+      rescue => e
+        render json: { error: 'Ocurrió un error al cambiar el estado del usuario' }, status: :internal_server_error
+      end
+    end
+    
+## ACA TERMINA
    
 
 

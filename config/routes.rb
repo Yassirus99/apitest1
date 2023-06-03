@@ -8,8 +8,11 @@
   resources :empleados, only: [:index, :show, :create, :update, :destroy]
   # Autenticacion
   post '/authenticate', to: 'authentication#authenticate'
+  
   # Usuario
   resources :usuarios, only: [:index, :show, :create, :update, :destroy]
+  patch 'cambiar_estado', on: :member
+
   # Rol
   resources :roles, only: [:index, :show, :create, :update, :destroy]
   # Tipo recurso
@@ -106,6 +109,8 @@
   resources :tipo_profesores, only: [:index, :show, :create, :update, :destroy]
   #estado observacion plan estudio
   resources :estadoobservacionplansstudio, only: [:index, :show, :create, :update, :destroy]
+
+
 
 
 end

@@ -11,6 +11,9 @@ gem 'mysql2', '~> 0.5.5'
 
 gem "jwt"
 
+gem 'faker'
+
+
 gem "bcrypt"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"

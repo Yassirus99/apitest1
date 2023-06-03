@@ -38,7 +38,6 @@ class EstudiantesController < ApplicationController
     def set_estudiante
       @estudiante = Estudiante.find_by(ID_ESTUDIANTE: params[:id])
   
-      # Validación de existencia de estudiante
       if @estudiante.nil?
         render json: { error: "Estudiante no encontrado" }, status: :not_found
       end
