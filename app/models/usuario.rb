@@ -5,6 +5,7 @@ class Usuario < ApplicationRecord
   belongs_to :empleado, foreign_key: "ID_EMPLEADO", primary_key: "ID_EMPLEADO", optional: true
   belongs_to :tipousuario, foreign_key: "ID_F_TIPO_USUARIO", primary_key: "ID_TIPO_USUARIO"
   belongs_to :profesor, foreign_key: "ID_F_PROFESOR", primary_key: "ID_PROFESOR", optional: true
+  has_many   :rol, foreign_key: "ID_F_USUARIO", primary_key: "ID_USUARIO"
 
   attribute :ID_USUARIO, :integer
   attribute :ID_EMPLEADO, :integer
@@ -17,6 +18,8 @@ class Usuario < ApplicationRecord
   attribute :ACTIVO_USUARIO, :boolean
   attribute :FECHA_CREACION_USUARIO, :datetime
   attribute :FECHA_MODIFICACION_USUARIO, :datetime
+
+  
 
   def contrasenia=(new_password)
     if new_password.nil? || new_password.empty?

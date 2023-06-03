@@ -11,6 +11,7 @@ RSpec.describe 'Usuarios', type: :request do
           { '$ref' => '#/components/schemas/usuario' }
         ]
       }
+      # body scheme optional
 
       response '201', 'Uusario creado', swagger_strict_schema_validation: true do
         schema oneOf: [
@@ -28,9 +29,10 @@ RSpec.describe 'Usuarios', type: :request do
     get 'Lista de usuarios' do
       tags 'Usuarios'
       produces 'application/json', 'text/json', 'text/plain'
-      parameter name: :usuario, in: :query, schema: {
+      parameter name: :usuario, in: :query, required: false, schema: {
         '$ref' => '#/components/schemas/usuario'
       }
+    
 
       response '200', 'Ok', swagger_strict_schema_validation: true do
         schema type: :array,

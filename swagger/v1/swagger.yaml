@@ -93,6 +93,7 @@ paths:
       parameters:
       - name: usuario
         in: query
+        required: false
         schema:
           "$ref": "#/components/schemas/usuario"
       responses:

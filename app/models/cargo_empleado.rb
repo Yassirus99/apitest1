@@ -1,6 +1,6 @@
 class CargoEmpleado < ApplicationRecord
     # Nombre de la tabla en la base de datos
-    self.table_name = 'CARGO_EMPLEADO'
+    self.table_name = 'CARGOEMPLEADO'
   
     # Definir los atributos del modelo
     attribute :ID_CARGO_EMPLEADO, :integer
@@ -9,5 +9,5 @@ class CargoEmpleado < ApplicationRecord
     # Validaciones
     validates :ID_CARGO_EMPLEADO, presence: true
     validates :CARGO_EMPLEADO, presence: true
-  end
+end
   
