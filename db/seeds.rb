@@ -1,5 +1,5 @@
-/
-Usuario.upsert({
+
+Usuario.create({
     ID_EMPLEADO: "1",
     ID_F_TIPO_USUARIO: "1",
     ID_F_PROFESOR: "1",
@@ -10,7 +10,7 @@ Usuario.upsert({
     ACTIVO_USUARIO: true,
     FECHA_CREACION_USUARIO: Time.now,
     FECHA_MODIFICACION_USUARIO: Time.now
-})/
+})
 
 /
 # Crear un nuevo empleado

@@ -10,8 +10,15 @@
   post '/authenticate', to: 'authentication#authenticate'
   
   # Usuario
-  resources :usuarios, only: [:index, :show, :create, :update, :destroy]
-  patch 'cambiar_estado', on: :member
+  resources :usuarios, only: [:index, :show, :create, :update, :destroy] do
+    member do
+      patch 'cambiar_estado'
+    end
+
+      collection do
+        get 'obtener_usuarios_tipo_rol'
+      end
+    end
 
   # Rol
   resources :roles, only: [:index, :show, :create, :update, :destroy]
@@ -111,12 +118,7 @@
   resources :estadoobservacionplansstudio, only: [:index, :show, :create, :update, :destroy]
 
 
-
-
 end
-
-
-
 
 # namespace 'api' do
   #  namespace 'v1' do

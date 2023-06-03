@@ -94,8 +94,42 @@ class UsuariosController < ApplicationController
     end
     
 ## ACA TERMINA
-   
 
+##OBTIENE USUARIO, 
+## ID_TIPO_USUARIO (Que Debe ser de valor 2) 
+##y USUARIO_ACTIVO (Debe ser true) y aparte obtener 
+##los atributos NOMBRE_USUARIO y ID_USUARIO
+
+/
+def obtener_usuarios_tipo_rol
+  @usuarios = Usuario.where(ID_TIPO_USUARIO: 2, USUARIO_ACTIVO: true)
+                     .pluck(:NOMBRE_USUARIO, :ID_USUARIO)
+  
+  render json: @usuarios, status: :ok
+end
+/
+
+def obtener_usuarios_tipo_rol
+  lista_roles = []
+
+  usuarios_roles = Usuario.where(ID_F_TIPO_USUARIO: 2, ACTIVO_USUARIO: true)
+
+  if usuarios_roles.present?
+    usuarios_roles.each do |rol_it|
+      nombre_usuario = rol_it.NOMBRE_USUARIO
+      id_usuario = rol_it.ID_USUARIO
+
+      rol_pivote = { id_usuario: id_usuario, nombre_usuario: nombre_usuario }
+      lista_roles.push(rol_pivote)
+    end
+  end
+
+  render json: lista_roles, status: :ok
+end
+
+
+   
+## AQUI TERMINA ESTA FUNCION
 
   
     def show
@@ -129,7 +163,7 @@ class UsuariosController < ApplicationController
         render json: @usuario.errors, status: :unprocessable_entity
       end
     end
-  
+  /
     def update
       @usuario = Usuario.find(params[:id])
       if @usuario.update(usuario_params)
@@ -138,7 +172,30 @@ class UsuariosController < ApplicationController
         render json: @usuario.errors, status: :unprocessable_entity
       end
     end
-  
+/
+
+def update
+  @usuario = Usuario.find(params[:id])
+
+  # Verifica si se realiza un cambio en el estado del usuario
+  if params[:ACTIVO_USUARIO].present? && params[:ACTIVO_USUARIO] != @usuario.ACTIVO_USUARIO
+    @usuario.ACTIVO_USUARIO = params[:ACTIVO_USUARIO]
+
+    if @usuario.save
+      render json: { message: "Estado del usuario actualizado" }, status: :ok
+    else
+      render json: { error: "No se pudo actualizar el estado del usuario" }, status: :unprocessable_entity
+    end
+  else
+    # Si no hay cambio en el estado,flujo normal
+    if @usuario.update(usuario_params)
+      render json: @usuario, status: :ok
+    else
+      render json: @usuario.errors, status: :unprocessable_entity
+    end
+  end
+end
+
     def destroy
       @usuario = Usuario.find_by(ID_USUARIO: params[:id])
 
