@@ -1,6 +1,12 @@
-class DatosPersona < ApplicationRecord
+class Datospersona < ApplicationRecord
     # Nombre de la tabla en la base de datos
-    self.table_name = 'DATOS_PERSONA'
+    self.table_name = 'DATOSPERSONA'
+
+    belongs_to :empleado, foreign_key: "ID_EMPLEADO", primary_key: "ID_EMPLEADO", optional: true
+    belongs_to :pais, foreign_key: "ID_F_PAIS_NACIONALIDAD", primary_key: "ID_PAIS", optional: false
+    belongs_to :departamento, foreign_key: "ID_F_DEPARTAMENTO_RESIDENCIA", primary_key: "ID_DEPARTAMENTO", optional: true
+    belongs_to :municipio, foreign_key: "ID_F_MUNICIPIO_RESIDENCIA", primary_key: "ID_MUNICIPIO", optional: true
+    belongs_to :profesor, foreign_key: "ID_F_PROFESOR", primary_key: "ID_PROFESOR", optional: true
   
     # Definir los atributos del modelo
     attribute :ID_PERSONA, :integer

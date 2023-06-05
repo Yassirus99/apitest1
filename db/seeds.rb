@@ -1,3 +1,5 @@
+require_relative 'seed_paises'
+
 Tipousuario.upsert({
   ID_TIPO_USUARIO: 1,
   TIPO_USUARIO: "Usuario",
@@ -59,3 +61,5 @@ Usuario.upsert({
   FECHA_CREACION_USUARIO: Time.now,
   FECHA_MODIFICACION_USUARIO: Time.now
 })
+
+

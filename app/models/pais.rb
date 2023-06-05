@@ -7,5 +7,5 @@ class Pais < ApplicationRecord
     attribute :PAIS, :string
   
     validates :PAIS, presence: true, length: { maximum: 50 }
-  end
+end
   

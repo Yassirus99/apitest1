@@ -12,7 +12,7 @@ class Rol < ApplicationRecord
   attribute :FECHA_CREACION, :date
   attribute :FECHA_MODIFICACION, :date
 
-  validates :ID_ROL, :ID_F_USUARIO_ROL, presence: true
+  validates :ID_F_USUARIO_ROL, presence: true
   validates :ACTIVO_ROL, inclusion: { in: [true, false] }
 
   belongs_to :usuario, foreign_key: 'ID_F_USUARIO', class_name: 'Usuario'

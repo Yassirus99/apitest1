@@ -5,20 +5,25 @@
   # Tipousuario
   resources :tipousuarios, only: [:index, :show]
   # Empleado
-  resources :empleados, only: [:index, :show, :create, :update, :destroy]
+  resources :empleados, only: [:index, :show, :create, :update, :destroy] do 
+    collection do
+      get 'empleados_sin_usuario'
+    end
+  end
+
   # Autenticacion
   post '/authenticate', to: 'authentication#authenticate'
   
   # Usuario
   resources :usuarios, only: [:index, :show, :create, :update, :destroy] do
-    member do
-      patch 'cambiar_estado'
-    end
+    # member do
+    #   patch 'cambiar_estado'
+    # end
 
-      collection do
-        get 'obtener_usuarios_tipo_rol'
-      end
-    end
+    # collection do
+    #   get 'obtener_usuarios_tipo_rol'
+    # end
+  end
 
   # Rol
   resources :roles, only: [:index, :show, :create, :update, :destroy]

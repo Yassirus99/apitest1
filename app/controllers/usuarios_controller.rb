@@ -8,13 +8,13 @@ class UsuariosController < ApplicationController
       :profesor,
       :rol
     )
-    .where("ACTIVO_USUARIO = ?", true)
-    
+    # .where("ACTIVO_USUARIO = ?", true)
+
     @usuarios = @usuarios.where("ACTIVO_ROL = ?", true).references(:rol)
-    
+
     attributes = Usuario.attribute_names
     params.each do |key, value|
-      if attributes.include? key 
+      if attributes.include? key
         @usuarios = @usuarios.where(key => value) unless value.blank?
       elsif key == "search"
         value.split(" ").each do |word|
@@ -43,10 +43,10 @@ class UsuariosController < ApplicationController
 
   def usuario_rol
     @usuarios = Usuario.where("ACTIVO_USUARIO = ?", true)
-    
+
     attributes = Usuario.attribute_names
     params.each do |key, value|
-      if attributes.include? key 
+      if attributes.include? key
         @usuarios = @usuarios.where(key => value) unless value.blank?
       elsif key == "search"
         value.split(" ").each do |word|
@@ -68,7 +68,6 @@ class UsuariosController < ApplicationController
       :rol
     ])
 
-    # render json: response, status: :ok
     render json: response, status: :ok
   end
 
@@ -76,11 +75,11 @@ class UsuariosController < ApplicationController
   #   begin
   #     id_usuario = params[:id]
   #     usuario_actual = current_user.id
-  
+
   #     if id_usuario != usuario_actual
   #       usuario = Usuario.find(id_usuario)
   #       estado_activo = usuario.ACTIVO_USUARIO
-  
+
   #       # Cambiar el estado del usuario
   #       usuario.ACTIVO_USUARIO = !estado_activo
   #       if usuario.save
@@ -134,16 +133,76 @@ class UsuariosController < ApplicationController
       :tipousuario,
       :profesor
     ]).first
-  
+
     render json: response, status: :ok
   end
-  
+
   def create
-    @usuario = Usuario.new(usuario_params)
-    if @usuario.save
-      render json: @usuario, status: :created
-    else
-      render json: @usuario.errors, status: :unprocessable_entity
+    ActiveRecord::Base.transaction do
+      if !usuario_params[:NOMBRE_USUARIO].present?
+        render json: {error: "Nombre de usuario no puede estar vacío"}, status: :bad_request
+        return
+      end
+
+      if !usuario_params[:CORREO_ELECTRONICO_USUARIO].present?
+        render json: {error: "Correo electrónico no puede estar vacío"}, status: :bad_request
+        return
+      end
+
+      if Usuario.find_by(CORREO_ELECTRONICO_USUARIO: usuario_params[:CORREO_ELECTRONICO_USUARIO])
+        render json: {error: "Correo electrónico ya existe"}, status: :bad_request
+        return
+      end
+
+      if Usuario.find_by(NOMBRE_USUARIO: usuario_params[:NOMBRE_USUARIO])
+        render json: {error: "Nombre de usuario ya existe"}, status: :bad_request
+        return
+      end
+
+      @usuario = Usuario.new(usuario_params)
+      if @usuario.save!
+
+        if params[:rol].present?
+          for rol in rol_params
+            @rol = Rol.new({
+              ID_F_USUARIO: @usuario.ID_USUARIO,
+              ID_F_USUARIO_ROL: rol[:id_usuario],
+              ACTIVO_ROL: true,
+              FECHA_CREACION: Time.now,
+              FECHA_MODIFICACION: Time.now
+            })
+            if @rol.save
+              next
+            else
+              render json: @rol.errors, status: :unprocessable_entity
+              raise ActiveRecord::Rollback
+              return
+            end
+          end
+        end
+        @usuario = Usuario.includes(
+          :empleado,
+          :tipousuario,
+          :profesor,
+          :rol
+        ).find_by(ID_USUARIO: @usuario.ID_USUARIO)
+        @usuario = @usuario.as_json(include: [
+          :empleado,
+          :tipousuario,
+          :profesor,
+          :rol => {
+            :include => [
+              :usuario_rol,
+              :usuario
+            ]
+          }
+        ])
+        render json: @usuario, status: :created
+        ActiveRecord::Base.connection.commit_db_transaction
+        return
+      else
+        render json: @usuario.errors, status: :unprocessable_entity
+      end
     end
   end
 
@@ -188,7 +247,7 @@ class UsuariosController < ApplicationController
 
     head :no_content
   end
-  
+
   private
 
   def set_usuario
@@ -197,6 +256,10 @@ class UsuariosController < ApplicationController
 
   def usuario_params
     params.require(:usuario).permit(:ID_USUARIO, :ID_EMPLEADO, :ID_F_TIPO_USUARIO, :ID_F_PROFESOR, :NOMBRE_USUARIO, :CORREO_ELECTRONICO_USUARIO, :DESCRIPCION_ROL, :CONTRASENIA, :ACTIVO_USUARIO, :FECHA_CREACION_USUARIO, :FECHA_MODIFICACION_USUARIO)
+  end
+
+  def rol_params
+    params.require(:rol).map { |rol_params| rol_params.permit(:id_usuario) }
   end
 
   def validar_usuario
