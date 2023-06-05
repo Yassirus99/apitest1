@@ -2,6 +2,13 @@ class RolesController < ApplicationController
     def index
       @roles = Rol.all
       render json: @roles, status: :ok
+      @usuarios_tipo_2 = Usuario.where(ID_TIPO_USUARIO: 2)
+
+    render json: {
+      roles: @roles,
+      usuarios_tipo_2: @usuarios_tipo_2
+    }, status: :ok
+      
     end
   
     def show
