@@ -14,13 +14,13 @@ Tipousuario.upsert({
 
 Tiporecurso.upsert({
   ID_TIPO_RECURSO: 1,
-  TIPO_RECURSO: "usuario_normal"
-})
+  TIPO_RECURSO: "recurso_1"
+});
 
 Tiporecurso.upsert({
   ID_TIPO_RECURSO: 2,
-  TIPO_RECURSO: "usuario_rol"
-})
+  TIPO_RECURSO: "recurso_2"
+});
 
 CargoEmpleado.upsert({
   ID_CARGO_EMPLEADO: 1,

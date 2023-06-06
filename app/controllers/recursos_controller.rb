@@ -2,6 +2,27 @@ class RecursosController < ApplicationController
   # GET /recursos
   def index
     @recursos = Recurso.all
+
+    @recursos = @recursos.as_json(
+      include: [
+        :recurso_padre,
+        :tipo_recurso
+      ]
+    )
+
+    render json: @recursos, status: :ok
+  end
+
+  def activos
+    @recursos = Recurso.where(:ACTIVO_RECURSO => true)
+
+    @recursos = @recursos.as_json(
+      include: [
+        :recurso_padre,
+        :tipo_recurso
+      ]
+    )
+
     render json: @recursos, status: :ok
   end
 
@@ -14,6 +35,13 @@ class RecursosController < ApplicationController
       render json: { error: "Recurso no encontrado" }, status: :not_found
       return
     end
+
+    @recurso = @recurso.as_json(
+      include: [
+        :recurso_padre,
+        :tipo_recurso
+      ]
+    )
 
     render json: @recurso, status: :ok
   end

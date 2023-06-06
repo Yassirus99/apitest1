@@ -30,7 +30,11 @@
   # Tipo recurso
   resources :tiporecursos, only: [:index, :show]
   # Recurso
-  resources :recursos, only: [:index, :show, :create, :update, :destroy]
+  resources :recursos, only: [:index, :show, :create, :update, :destroy] do
+    collection do
+      get 'activos'
+    end
+  end
   #Maestria
   resources :maestria, only: [:index, :show, :create, :update, :destroy]
   #Ciclomaestria
