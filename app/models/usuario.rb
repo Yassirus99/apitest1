@@ -7,6 +7,9 @@ class Usuario < ApplicationRecord
   belongs_to :profesor, foreign_key: "ID_F_PROFESOR", primary_key: "ID_PROFESOR", optional: true
   has_many   :rol, foreign_key: "ID_F_USUARIO", primary_key: "ID_USUARIO"
 
+  has_many  :permisos, -> { where(ACTIVO_PERMISO: true) }, foreign_key: "ID_F_ROL_USUARIO", primary_key: "ID_USUARIO", dependent: :destroy
+  has_many  :recursos, through: :permisos
+
   attribute :ID_USUARIO, :integer
   attribute :ID_EMPLEADO, :integer
   attribute :ID_F_TIPO_USUARIO, :integer

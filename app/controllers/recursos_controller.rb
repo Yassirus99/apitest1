@@ -6,7 +6,13 @@ class RecursosController < ApplicationController
     @recursos = @recursos.as_json(
       include: [
         :recurso_padre,
-        :tipo_recurso
+        :tipo_recurso,
+        :usuarios,
+        :permisos => {
+          include: [
+            :usuario
+          ]
+        }
       ]
     )
 
@@ -19,7 +25,13 @@ class RecursosController < ApplicationController
     @recursos = @recursos.as_json(
       include: [
         :recurso_padre,
-        :tipo_recurso
+        :tipo_recurso,
+        :usuarios,
+        :permisos => {
+          include: [
+            :usuario
+          ]
+        }
       ]
     )
 

@@ -5,6 +5,9 @@ class Recurso < ApplicationRecord
 
     belongs_to :recurso_padre, foreign_key: 'ID_F_RECURSO_PADRE', primary_key: 'ID_RECURSO', class_name:'Recurso', optional: true
     belongs_to :tipo_recurso, foreign_key: 'ID_F_TIPO_RECURSO', primary_key: 'ID_TIPO_RECURSO', class_name:'Tiporecurso', optional: true
+
+    has_many  :permisos, -> { where(ACTIVO_PERMISO: true) }, foreign_key: 'ID_F_RECURSO', primary_key: 'ID_RECURSO', dependent: :destroy
+    has_many  :usuarios, through: :permisos
   
     attribute :ID_RECURSO, :integer
     attribute :ID_F_RECURSO_PADRE, :integer

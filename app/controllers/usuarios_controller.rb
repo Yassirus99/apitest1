@@ -29,6 +29,12 @@ class UsuariosController < ApplicationController
       :empleado,
       :tipousuario,
       :profesor,
+      :permisos => {
+        :include => [
+          :recurso,
+        ]
+      },
+      :recursos => {},
       :rol => {
         :include => [
           :usuario_rol,

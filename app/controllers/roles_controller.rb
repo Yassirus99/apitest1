@@ -1,13 +1,20 @@
 class RolesController < ApplicationController
     def index
       @roles = Rol.all
+      
+      attributes = Rol.attribute_names
+      params.each do |key, value|
+        if attributes.include? key
+          @usuarios = @usuarios.where(key => value) unless value.blank?
+        elsif key == "search"
+          value.split(" ").each do |word|
+            @usuarios = @usuarios.where("NOMBRE_USUARIO LIKE ?", "%#{word}%")
+            @usuarios = @usuarios.or(Usuario.where("CORREO_ELECTRONICO_USUARIO LIKE ?", "%#{word}%"))
+          end
+        end
+      end
+      
       render json: @roles, status: :ok
-      @usuarios_tipo_2 = Usuario.where(ID_TIPO_USUARIO: 2)
-
-    render json: {
-      roles: @roles,
-      usuarios_tipo_2: @usuarios_tipo_2
-    }, status: :ok
       
     end
   
