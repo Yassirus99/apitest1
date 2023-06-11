@@ -1,4 +1,7 @@
 require_relative 'seed_paises'
+require_relative 'seed_escuelas'
+require_relative 'seed_estado_maestria'
+require_relative 'seed_estado_observacion_maestria'
 
 Tipousuario.upsert({
   ID_TIPO_USUARIO: 1,

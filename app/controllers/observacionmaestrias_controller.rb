@@ -4,11 +4,26 @@ class ObservacionmaestriasController < ApplicationController
     # GET /observacionmaestrias
     def index
       @observacionmaestrias = Observacionmaestria.all
+
+      @observacionmaestrias = @observacionmaestrias.as_json(
+        include: [
+          :estado,
+          :maestria
+        ]
+      )
+
       render json: @observacionmaestrias
     end
   
     # GET /observacionmaestrias/1
     def show
+      @observacionmaestria = @observacionmaestria.as_json(
+        include: [
+          :estado,
+          :maestria
+        ]
+      )
+
       render json: @observacionmaestria
     end
   

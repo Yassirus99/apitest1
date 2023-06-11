@@ -1,6 +1,6 @@
 class EstadoMaestria < ApplicationRecord
     # Nombre de la tabla en la base de datos
-    self.table_name = 'ESTADO_MAESTRIA'
+    self.table_name = 'ESTADOMAESTRIA'
   
     # Definir los atributos del modelo
     attribute :ID_ESTADO_MAESTRIA, :integer

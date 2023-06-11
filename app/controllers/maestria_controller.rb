@@ -3,12 +3,59 @@ class MaestriaController < ApplicationController
 
   # GET /maestria
   def index
-    @maestria = Maestria.all
+    @maestria = Maestria
+    .includes(
+      :coordinador_academico
+    )
+    @maestria = @maestria.as_json(
+      include: [
+        :escuela,
+        :observaciones => {
+          :include => [
+            :estado
+          ]
+        },
+        :empleado_creador => {
+          :include => [
+            :datospersona,
+            :cargo_empleado
+          ]
+        },
+        :coordinador_academico => {
+          :include => [
+            :datospersona,
+            :cargo_empleado
+          ]
+        }
+      ]
+    )
     render json: @maestria, status: :ok
   end
 
   # GET /maestria/1
   def show
+    @maestria = @maestria.as_json(
+      include: [
+        :escuela,
+        :observaciones => {
+          :include => [
+            :estado
+          ]
+        },
+        :empleado_creador => {
+          :include => [
+            :datospersona,
+            :cargo_empleado
+          ]
+        },
+        :coordinador_academico => {
+          :include => [
+            :datospersona,
+            :cargo_empleado
+          ]
+        }
+      ]
+    )
     render json: @maestria, status: :ok
   end
 
@@ -45,6 +92,15 @@ class MaestriaController < ApplicationController
   end
 
   def maestria_params
-    params.require(:maestria).permit(:CODIGO_MAESTRIA, :ID_EMPLEADO, :ID_F_COORDINADOR_ACADEMICO, :ID_F_ESCUELA, :NOMBRE_MAESTRIA, :DESCRIPCION)
+    params.require(:maestrium)
+    .permit(
+      :CODIGO_MAESTRIA, 
+      :ID_ESTADO_MAESTRIA, 
+      :ID_F_COORDINADOR_ACADEMICO, 
+      :ID_F_EMPLEADO_CREADOR, 
+      :ID_F_ESCUELA, 
+      :NOMBRE_MAESTRIA, 
+      :DESCRIPCION
+    )
   end
 end

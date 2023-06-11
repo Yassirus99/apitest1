@@ -26,9 +26,11 @@ class UsuariosController < ApplicationController
 
     # get all includes
     response = @usuarios.as_json(include: [
+      :estado_maestria,
       :empleado,
       :tipousuario,
       :profesor,
+      :observaciones,
       :permisos => {
         :include => [
           :recurso,
